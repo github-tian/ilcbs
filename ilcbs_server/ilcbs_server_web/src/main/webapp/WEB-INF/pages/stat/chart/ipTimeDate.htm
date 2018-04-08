@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>ECharts</title>
+		<link rel="stylesheet" href="../components/newAmcharts/style.css" type="text/css">
+        <script src="../components/jquery-ui/jquery-1.2.6.js" type="text/javascript"></script>
+        <script src="../components/eCharts/echarts.min.js" type="text/javascript"></script>
+	</head>
+	<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 900px;height:550px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+         $(function(){
+    	   //alert("sssss");
+       
+        	$.ajax({
+        		url:'statChartAction_getIpTimeDateInfo',
+        		dataType:'json',
+        		type:'get',
+        		success:function(value){  
+        			//alert(value)
+        			
+				       option = {
+		    title : {
+		        text: '访问IP压力图',
+		        subtext: '精心推敲'
+		    },
+		    tooltip : {
+		        trigger: 'axis'
+		    },
+		    legend: {
+		        data:['蒸发量','访问压力指数']
+		    },
+		    toolbox: {
+		        show : true,
+		        feature : {
+		            dataView : {show: true, readOnly: false},
+		            magicType : {show: true, type: ['line', 'bar']},
+		            restore : {show: true},
+		            saveAsImage : {show: true}
+		        }
+		    },
+		    calculable : true,
+		    xAxis : [
+		        {
+		            type : 'category',
+		            data : value.ipActions
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value'
+		        }
+		    ],
+		    series : [
+		        /* {
+		            name:'蒸发量',
+		            type:'bar',
+		            data:value.ipTimes,
+		            markPoint : {
+		                data : [
+		                    {type : 'max', name: '最大值'},
+		                    {type : 'min', name: '最小值'}
+		                ]
+		            },
+		            markLine : {
+		                data : [
+		                    {type : 'average', name: '平均值'}
+		                ]
+		            }
+		        }, */
+		        {
+		            name:'访问次数',
+		            type:'bar',
+		            data:value.ipTimes,
+		            markPoint : {
+		                data : [
+		                    {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183},
+		                    {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
+		                ]
+		            },
+		            markLine : {
+		                data : [
+		                    {type : 'average', name : '平均值'}
+		                ]
+		            }
+		        }
+		    ]
+		};
+
+
+
+
+        	        // 使用刚指定的配置项和数据显示图表。
+        	        myChart.setOption(option);
+        			
+       		}
+        	}) 
+       })   
+        			
+       
+       
+       
+       
+       
+        
+		
+		
+    </script>
+</body>
+</html>
