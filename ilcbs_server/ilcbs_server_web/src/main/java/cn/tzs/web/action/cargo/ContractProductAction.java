@@ -66,7 +66,7 @@ public class ContractProductAction extends BaseAction implements ModelDriven<Con
         page.setTotalRecord(jpaPage.getTotalElements());
         page.setTotalPage(jpaPage.getTotalPages());
         page.setResults(jpaPage.getContent());
-        page.setUrl("contractProductAction_list");
+        page.setUrl("contractProductAction_tocreate");
         super.push(page);
         return "tocreate";
     }

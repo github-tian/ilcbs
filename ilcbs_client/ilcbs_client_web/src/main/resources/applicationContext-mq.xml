@@ -44,14 +44,5 @@
         <!-- 非pub/sub模型（发布/订阅），即队列模式 -->
         <property name="pubSubDomain" value="false" />
     </bean>
-
-    <!-- 定义JmsTemplate的Topic类型 -->
-    <bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate" >
-         <!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->  
-        <constructor-arg ref="connectionFactory" />
-        <!-- pub/sub模型（发布/订阅） -->
-        <property name="pubSubDomain" value="true"  />
-    </bean>
-
    
 </beans>

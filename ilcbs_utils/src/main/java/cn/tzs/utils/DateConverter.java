@@ -18,7 +18,7 @@ import org.springframework.web.context.request.WebRequest;
 	<bean id="annotationMethodHandlerAdapter" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<!-- 日期格式转换 -->
         <property name="webBindingInitializer">
-         <bean class="cn.itcast.jk.util.DateConverter"/>
+         <bean class="cn.tzs.jk.util.DateConverter"/>
         </property>
 	</bean>
 	
